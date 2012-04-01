@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>gear</artifactId>
+    <groupId>org.gear</groupId>
+    <version>0.1</version>
+  </parent>
+  <artifactId>gear-jpa-webapp</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <name>Gear Jpa Webapp</name>
+
+  <build>
+    <finalName>gear-jpa-webapp</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>8.1.0.RC2</version>
+            <configuration>
+                <scanIntervalSeconds>0</scanIntervalSeconds>
+                <webAppConfig>
+                    <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+                </webAppConfig>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+  
+   <dependencies>
+     <!-- Spring Framework -->
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+     </dependency>
+     <!-- Spring MVC -->
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+     </dependency>
+     <!-- Spring Data JPA -->
+     <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+     </dependency>
+     <!-- Hibernate -->
+     <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+     </dependency>
+      <dependency>
+         <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+      </dependency>
+     <!-- H2 Database -->
+     <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+     </dependency>
+     <!-- BoneCP -->
+     <dependency>
+      <groupId>com.jolbox</groupId>
+      <artifactId>bonecp</artifactId>
+     </dependency>
+     <!-- Servlet API 3.0 -->
+     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+     </dependency>
+     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+     </dependency>
+     <!-- Logging dependencies -->
+     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+     </dependency>
+     <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+     </dependency>
+     <!-- Testing Dependencies -->
+     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+     </dependency>
+     <dependency>
+       <groupId>commons-lang</groupId>
+       <artifactId>commons-lang</artifactId>
+     </dependency>
+   </dependencies>
+  
+</project>
