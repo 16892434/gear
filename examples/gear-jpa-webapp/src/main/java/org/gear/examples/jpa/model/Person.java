@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -15,13 +16,18 @@ import javax.persistence.Version;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+/**
+ * An entity class which contains the information of a single person.
+ * @author Petri Kainulainen
+ */
 @Entity
-@Table(name="persons")
+@NamedQuery(name = "Person.findByName", query = "SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(?1)")
+@Table(name = "persons")
 public class Person {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private Long id;
 	@Column(name="creation_time", nullable=false)
 	private Date creationTime;
 	@Column(name="first_name", nullable=false)
@@ -33,7 +39,7 @@ public class Person {
 	@Version
 	private long version = 0;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -41,7 +47,7 @@ public class Person {
      * This setter method should only be used by unit tests.
      * @param id
      */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

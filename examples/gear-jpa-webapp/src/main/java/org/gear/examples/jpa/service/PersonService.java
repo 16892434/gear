@@ -3,6 +3,7 @@ package org.gear.examples.jpa.service;
 import java.util.List;
 
 import org.gear.examples.jpa.dto.PersonDTO;
+import org.gear.examples.jpa.dto.SearchDTO;
 import org.gear.examples.jpa.model.Person;
 import org.gear.examples.jpa.util.PersonNotFoundException;
 
@@ -47,4 +48,13 @@ public interface PersonService {
      * @throws PersonNotFoundException  if no person is found with given id.
      */
     public Person update(PersonDTO updated) throws PersonNotFoundException;
+    
+    /**
+     * Searches persons by using the search criteria given as a parameter.
+     * @param searchCriteria
+     * @return  A list of persons matching with the search criteria. If no persons is found, this method
+     *          returns an empty list.
+     * @throws IllegalArgumentException if search type is not given.
+     */
+    public List<Person> search(SearchDTO searchCriteria);
 }

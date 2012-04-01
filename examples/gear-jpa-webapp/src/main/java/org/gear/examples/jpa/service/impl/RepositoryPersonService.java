@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.gear.examples.jpa.dto.PersonDTO;
+import org.gear.examples.jpa.dto.SearchDTO;
 import org.gear.examples.jpa.model.Person;
 import org.gear.examples.jpa.repository.PersonRepository;
 import org.gear.examples.jpa.service.PersonService;
 import org.gear.examples.jpa.util.PersonNotFoundException;
+import org.gear.examples.jpa.util.SearchType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -84,8 +86,41 @@ public class RepositoryPersonService implements PersonService {
      * This setter method should be used only by unit tests.
      * @param personRepository
      */
-    protected void setPersonRepository(PersonRepository personRepository) {
+    public void setPersonRepository(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
+
+    @Transactional(readOnly = true)
+	@Override
+	public List<Person> search(SearchDTO searchCriteria) {
+    	LOGGER.debug("Searching persons with search criteria: " + searchCriteria);
+    	
+    	String searchTerm = searchCriteria.getSearchTerm();
+    	SearchType searchType = searchCriteria.getSearchType();
+    	
+    	if(searchType == null) {
+    		throw new IllegalArgumentException();
+    	}
+    	
+		return findPersonsBySearchType(searchTerm, searchType);
+	}
+
+	private List<Person> findPersonsBySearchType(String searchTerm,
+			SearchType searchType) {
+		List<Person> persons;
+		
+		if(searchType == SearchType.METHOD_NAME) {
+			LOGGER.debug("Searching persons by using method name query creation.");
+			persons = personRepository.findByLastName(searchTerm);
+		} else if(searchType == SearchType.NAMED_QUERY) {
+			LOGGER.debug("Searching persons by using named query");
+			persons = personRepository.findByName(searchTerm);
+		} else {
+			LOGGER.debug("Searching persons by using query annotation");
+			persons = personRepository.find(searchTerm);
+		}
+		
+		return persons;
+	}
 
 }
