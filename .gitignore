@@ -15,7 +15,7 @@ modules/gear-core/.classpath
 modules/gear-core/.project
 modules/gear-core/.settings/
 modules/gear-extension/target/
-modules/gear-extension/target/
+modules/gear-extension/.settings/
 modules/gear-extension/logs/
 modules/gear-extension/.classpath
 modules/gear-extensioe/.project
