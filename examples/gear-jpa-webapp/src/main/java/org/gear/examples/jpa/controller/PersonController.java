@@ -74,7 +74,9 @@ public class PersonController extends AbstractController {
     public String search(@ModelAttribute(MODEL_ATTRIBUTE_SEARCHCRITERIA) SearchDTO searchCriteria, Model model) {
     	LOGGER.debug("Searching persons with search criteria: " + searchCriteria);
     	
-    	List<Person> persons = personService.search(searchCriteria);
+    	// List<Person> persons = personService.search(searchCriteria);
+    	String searchTerm = searchCriteria.getSearchTerm();
+    	List<Person> persons = personService.search(searchTerm);
     	LOGGER.debug("Found " + persons.size() + " persons");
     	
     	model.addAttribute(MODEL_ATTRIBUTE_PERSONS, persons);

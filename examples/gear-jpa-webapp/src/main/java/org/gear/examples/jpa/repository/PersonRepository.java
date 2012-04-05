@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.gear.examples.jpa.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -12,7 +13,7 @@ import org.springframework.data.repository.query.Param;
  * which is stored in the database.
  * @author Petri Kainulainen
  */
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface PersonRepository extends JpaRepository<Person, Long>, JpaSpecificationExecutor<Person> {
 
     /**
      * Finds a person by using the last name as a search criteria.

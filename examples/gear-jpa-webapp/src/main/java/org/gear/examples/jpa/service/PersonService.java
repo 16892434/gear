@@ -57,4 +57,12 @@ public interface PersonService {
      * @throws IllegalArgumentException if search type is not given.
      */
     public List<Person> search(SearchDTO searchCriteria);
+    
+    /**
+     * Searches persons by using the given search term as a parameter.
+     * @param searchTerm
+     * @return  A list of persons whose last name begins with the given search term. If no persons is found, this method
+     *          returns an empty list. This search is case insensitive.
+     */
+    public List<Person> search(String searchTerm);
 }

@@ -94,12 +94,12 @@ public class PersonControllerTest extends AbstractTestController {
     public void search() {
     	SearchDTO searchCriteria = createSearchCriteria(LAST_NAME, SearchType.METHOD_NAME);
     	List<Person> expected = new ArrayList<Person>();
-    	when(personServiceMock.search(searchCriteria)).thenReturn(expected);
+    	when(personServiceMock.search(searchCriteria.getSearchTerm())).thenReturn(expected);
     	
     	BindingAwareModelMap model = new BindingAwareModelMap();
     	String view = controller.search(searchCriteria, model);
     	
-    	verify(personServiceMock).search(searchCriteria);
+    	verify(personServiceMock).search(searchCriteria.getSearchTerm());
     	verifyNoMoreInteractions(personServiceMock);
     	
     	assertEquals(PersonController.PERSON_SEARCH_RESULT_VIEW, view);

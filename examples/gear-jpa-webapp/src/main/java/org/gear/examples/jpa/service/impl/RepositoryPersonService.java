@@ -1,5 +1,7 @@
 package org.gear.examples.jpa.service.impl;
 
+import static org.gear.examples.jpa.repository.PersonSpecifications.lastNameIsLike;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -121,6 +123,15 @@ public class RepositoryPersonService implements PersonService {
 		}
 		
 		return persons;
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<Person> search(String searchTerm) {
+		LOGGER.debug("Searching persons with search term: " + searchTerm);
+
+		//Passes the specification created by PersonSpecifications class to the repository.
+        return personRepository.findAll(lastNameIsLike(searchTerm));
 	}
 
 }
