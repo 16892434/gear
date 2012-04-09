@@ -9,6 +9,11 @@ examples/gear-jpa-webapp/logs/
 examples/gear-jpa-webapp/.classpath
 examples/gear-jpa-webapp/.project
 examples/gear-jpa-webapp/.settings/*
+examples/gear-shiro-examples/target/
+examples/gear-shiro-examples/logs/
+examples/gear-shiro-examples/.classpath
+examples/gear-shiro-examples/.project
+examples/gear-shiro-examples/.settings/*
 modules/gear-core/target/
 modules/gear-core/logs/
 modules/gear-core/.classpath
